@@ -76,3 +76,9 @@ func TestK0sInstallCommand(t *testing.T) {
 	h.Metadata.IsK0sLeader = false
 	require.Equal(t, `k0s install controller --enable-worker --token-file "from-configurer" --config "from-configurer"`, h.K0sInstallCommand())
 }
+
+// compile test only to veriy that the interface has all methods
+func TestK0sAlpineConfigurer(t *testing.T) {
+	h := Host{Role: "worker"}
+	h.Configurer = &linux.Alpine{}
+}
